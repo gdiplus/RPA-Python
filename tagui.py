@@ -1,6 +1,6 @@
 """INTEGRATION ENGINE OF RPA FOR PYTHON PACKAGE ~ TEBEL.ORG"""
 # Apache License 2.0, Copyright 2019 Tebel.Automation Private Limited
-# https://github.com/tebelorg/RPA-Python/blob/master/LICENSE.txt
+# https://mirror.ghproxy.com/https://github.com/tebelorg/RPA-Python/blob/master/LICENSE.txt
 __author__ = 'Ken Soh <opensource@tebel.org>'
 __version__ = '1.45.0'
 
@@ -210,7 +210,7 @@ def _tagui_delta(base_directory = None):
                     'tagui_header.js', 'tagui_parse.php', 'tagui.sikuli/tagui.py']
 
     for delta_file in delta_list:
-        tagui_delta_url = 'https://raw.githubusercontent.com/tebelorg/Tump/master/TagUI-Python/' + delta_file
+        tagui_delta_url = 'https://raw.fastgit.org/tebelorg/Tump/master/TagUI-Python/' + delta_file
         tagui_delta_file = base_directory + '/' + 'src' + '/' + delta_file
         if not download(tagui_delta_url, tagui_delta_file): return False
 
@@ -230,7 +230,7 @@ def _patch_macos_pjs():
     if platform.system() == 'Darwin' and not os.path.isdir(tagui_location() + '/.tagui/src/phantomjs_old'):
         original_directory = os.getcwd(); os.chdir(tagui_location() + '/.tagui/src')
         print('[RPA][INFO] - downloading latest PhantomJS to fix OpenSSL issue')
-        download('https://github.com/tebelorg/Tump/releases/download/v1.0.0/phantomjs-2.1.1-macosx.zip', 'phantomjs.zip')
+        download('https://mirror.ghproxy.com/https://github.com/tebelorg/Tump/releases/download/v1.0.0/phantomjs-2.1.1-macosx.zip', 'phantomjs.zip')
         if not os.path.isfile('phantomjs.zip'):
             print('[RPA][ERROR] - unable to download latest PhantomJS v2.1.1')
             os.chdir(original_directory); return False
@@ -307,7 +307,7 @@ def setup():
         print('[RPA][INFO] - ' + home_directory)
 
         # set tagui zip download url and download zip for respective operating systems
-        tagui_zip_url = 'https://github.com/tebelorg/Tump/releases/download/v1.0.0/' + tagui_zip_file 
+        tagui_zip_url = 'https://mirror.ghproxy.com/https://github.com/tebelorg/Tump/releases/download/v1.0.0/' + tagui_zip_file 
         if not download(tagui_zip_url, home_directory + '/' + tagui_zip_file):
             # error message is shown by download(), no need for message here 
             return False
@@ -406,7 +406,7 @@ def setup():
 
             # download from hosted setup file, if not already present when deployed using pack()
             if not os.path.isfile(tagui_directory + '/vcredist_x86.exe'):
-                vcredist_x86_url = 'https://raw.githubusercontent.com/tebelorg/Tump/master/vcredist_x86.exe'
+                vcredist_x86_url = 'https://raw.fastgit.org/tebelorg/Tump/master/vcredist_x86.exe'
                 if not download(vcredist_x86_url, tagui_directory + '/vcredist_x86.exe'):
                     return False
 
@@ -619,13 +619,13 @@ def pack():
     if platform.system() == 'Windows':
         tagui_directory = tagui_location() + '/' + 'tagui'
         # pack in Visual C++ MSVCR110.dll dependency from PHP for offline installation 
-        vcredist_x86_url = 'https://raw.githubusercontent.com/tebelorg/Tump/master/vcredist_x86.exe'
+        vcredist_x86_url = 'https://raw.fastgit.org/tebelorg/Tump/master/vcredist_x86.exe'
         if not download(vcredist_x86_url, tagui_directory + '/vcredist_x86.exe'):
             return False
     else:
         tagui_directory = tagui_location() + '/' + '.tagui'
     sikulix_directory = tagui_directory + '/' + 'src' + '/' + 'sikulix'
-    sikulix_jython_url = 'https://github.com/tebelorg/Tump/releases/download/v1.0.0/jython-standalone-2.7.1.jar'
+    sikulix_jython_url = 'https://mirror.ghproxy.com/https://github.com/tebelorg/Tump/releases/download/v1.0.0/jython-standalone-2.7.1.jar'
     if not download(sikulix_jython_url, sikulix_directory + '/' + 'jython-standalone-2.7.1.jar'):
         return False
 
@@ -649,7 +649,7 @@ def update():
     if not os.path.isdir('rpa_update'): os.mkdir('rpa_update')
     if not os.path.isdir('rpa_update/tagui.sikuli'): os.mkdir('rpa_update/tagui.sikuli')
 
-    rpa_python_url = 'https://raw.githubusercontent.com/tebelorg/RPA-Python/master/tagui.py'
+    rpa_python_url = 'https://raw.fastgit.org/tebelorg/RPA-Python/master/tagui.py'
     if not download(rpa_python_url, 'rpa_update' + '/' + 'rpa.py'): return False
 
     # get version number of latest release for the package to use in generated update.py
@@ -662,7 +662,7 @@ def update():
                     'tagui_header.js', 'tagui_parse.php', 'tagui.sikuli/tagui.py']
 
     for delta_file in delta_list:
-        tagui_delta_url = 'https://raw.githubusercontent.com/tebelorg/Tump/master/TagUI-Python/' + delta_file
+        tagui_delta_url = 'https://raw.fastgit.org/tebelorg/Tump/master/TagUI-Python/' + delta_file
         tagui_delta_file = 'rpa_update' + '/' + delta_file
         if not download(tagui_delta_url, tagui_delta_file): return False
 
