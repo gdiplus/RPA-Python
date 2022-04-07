@@ -8,14 +8,15 @@ import rpa as r
 
 # use init() to start TagUI, it auto downloads TagUI on first run
 # default init(visual_automation = False, chrome_browser = True)
-r.init()
+r.init(visual_automation = True)
 
 # use url('your_url') to go to web page, url() returns current URL
-r.url('https://www.baidu.com')
+r.url('https://login.taobao.com/member/login.jhtml')
 
 # use type() to enter text into an UI element or x, y location
 # '[enter]' = enter key, '[clear]' = clear field
-r.type('kw', 'github')
+r.type('fm-login-id', 'allen81')
+r.type('fm-login-password', 'gml651337')
 
 # use read() to fetch and return text from UI element
 # search_text = r.read('ybar-sbq')
@@ -23,7 +24,20 @@ r.type('kw', 'github')
 
 # use click() to click on an UI element or x, y location
 # rclick() = right-click, dclick() = double-click
-r.click('su')
+# r.click('button[type=submit]')
+
+r.hover(918, 525)
+r.wait(1)
+r.mouse('down')
+r.mouse('up')
+r.wait(1)
+r.mouse('down')
+r.hover(1176, 525)
+r.wait(1)
+r.mouse('up')
+r.wait(1)
+r.mouse('down')
+r.mouse('up')
 
 # use wait() to wait for a number of seconds
 # default wait() is 5 seconds
@@ -36,14 +50,14 @@ r.wait(6.6)
 
 # another example of interacting with a web page
 # include http:// or https:// in URL parameter
-r.url('https://duckduckgo.com')
-r.type('search_form_input_homepage', 'The search engine that doesn\'t track you.')
-r.snap('page', 'duckduckgo.png')
-r.wait(4.4)
+# r.url('https://duckduckgo.com')
+# r.type('search_form_input_homepage', 'The search engine that doesn\'t track you.')
+# r.snap('page', 'duckduckgo.png')
+# r.wait(4.4)
 
 # use close() to close TagUI process and web browser
 # if you forget to close, just close() next time
-r.close()
+# r.close()
 
 # in above web automation example, web element identifier can be XPath selector, CSS selector or
 # attributes id, name, class, title, aria-label, text(), href, in decreasing order of priority
